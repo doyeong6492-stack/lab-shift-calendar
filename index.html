@@ -65,7 +65,8 @@ const auth=firebase.auth(),db=firebase.firestore();
 </script>
 <script>
 (function(){
-var y=2026,m=11,group=4,editing=null;
+var today=new Date();
+var y=today.getFullYear(),m=today.getMonth()+1,group=4,editing=null;
 var storeKey='shift_calendar_changes_v1';
 var changes={},user=null,ready=false,unsub=null,approvalUnsub=null,adminUnsub=null,approved=false,isAdmin=false;
 // 최초 관리자 UID는 Firestore 규칙과 아래 두 곳에 동일하게 설정해야 합니다.
