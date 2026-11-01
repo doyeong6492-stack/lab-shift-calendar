@@ -28,6 +28,9 @@ button{background:white;border:1px solid #cbd5e1;border-radius:8px;padding:10px;
 .backup{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.backup button{font-size:13px;flex:1}
 
 .cell .tag{font-size:10px;line-height:1.3;margin-top:3px;color:#7c3aed;display:block;overflow-wrap:anywhere}.cell .shift-tag{color:#9a3412}
+.cell .shift{font-weight:600;letter-spacing:-.35px}.cell .shift:first-of-type{color:#b45309}.cell .shift:nth-of-type(2){color:#334e87}
+.cell{border-radius:3px}.cell .tag{border-radius:4px;background:#f5f0ff;padding:2px 1px;line-height:1.25}.cell .shift-tag{background:#fff0e4}
+#approvalPanel,#adminPanel{background:white;border:1px solid #cbd5e1;border-radius:12px;padding:13px;margin:10px 0}#approvalPanel[hidden],#adminPanel[hidden]{display:none}#adminPanel .person{padding:10px 0;border-bottom:1px solid #e2e8f0;overflow-wrap:anywhere}#adminPanel .person button{margin:4px 4px 0 0}#otherLeave[hidden]{display:none}#otherLeave{margin-top:6px}#adminToggle{margin-top:6px}#editor[hidden]{display:none}
 
 /* 날짜 칸은 모든 주에서 같은 높이로 유지하고 긴 일정은 칸 내부에서만 스크롤 */
 .grid{grid-auto-rows:minmax(132px,auto);align-items:stretch}
@@ -42,7 +45,7 @@ button{background:white;border:1px solid #cbd5e1;border-radius:8px;padding:10px;
 .cell.covering{background:#fff6c7;box-shadow:inset 0 0 0 2px #eab308}
 .cell .cover-active{color:#854d0e;font-weight:800}
 #authBar{background:#fff9df;border:1px solid #e7c65b;border-radius:12px;padding:12px;margin:12px 0;font-size:14px}#authBar button{margin:4px;padding:9px 13px}#authState{font-weight:700}#syncState{font-size:13px;color:#735b16}button:disabled{opacity:.45;cursor:not-allowed}
-</style></head><body><main class="wrap"><h1>📅 실험실 교대근무</h1><p class="sub">주간 08:00~17:00 · 야간 17:00~익일 08:00 · 주→야→비→휴</p><div id="authBar"><div id="authState">로그인 상태 확인 중…</div><div id="syncState">공동 저장 연결 대기 중</div><button id="loginGoogle" type="button">Google 로그인</button><button id="logoutGoogle" type="button" hidden>로그아웃</button></div><div class="toolbar"><button type="button" id="prev">‹ 이전</button><strong id="month">2026년 11월</strong><button type="button" id="next">다음 ›</button></div><p class="hint" style="font-size:12px;color:#64748b;margin:0 0 7px">조회할 조 선택 · 일정 수정은 날짜를 누른 뒤 조를 선택하세요.</p><div class="groups" id="groups"><button type="button" data-group="1" class="">1조</button><button type="button" data-group="2" class="">2조</button><button type="button" data-group="3" class="">3조</button><button type="button" data-group="4" class="on">4조</button></div><div class="week"><div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div></div><div class="grid" id="grid"><div class="cell working sun"><div class="date">1</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">2</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">3</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">4</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">5</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">6</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell sat"><div class="date">7</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell sun"><div class="date">8</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">9</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">10</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">11</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">12</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">13</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working sat"><div class="date">14</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell sun"><div class="date">15</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">16</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">17</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">18</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">19</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">20</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working sat"><div class="date">21</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working sun"><div class="date">22</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">23</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">24</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">25</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">26</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">27</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell sat"><div class="date">28</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working sun"><div class="date">29</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">30</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div></div><section class="editor" id="editor" hidden><h2 id="editTitle">근무 변경</h2><p class="hint" id="baseInfo"></p><label for="editGroup">수정할 조 선택 (상단 조 선택과 별개)</label><select id="editGroup"><option value="1">1조</option><option value="2">2조</option><option value="3">3조</option><option value="4">4조</option></select><label for="editShift">변경 근무 (기본 근무를 유지하려면 '기본대로')</label><select id="editShift"><option value="">기본대로</option><option value="주간">주간</option><option value="야간">야간</option><option value="비번">비번</option><option value="휴무">휴무</option></select><label for="editCover">대직 (선택한 조의 근무를 대신하는 조)</label><select id="editCover"><option value="">대직 없음</option><option value="1">1조</option><option value="2">2조</option><option value="3">3조</option><option value="4">4조</option></select><label for="editLeave">연가·공가·교육 등 표시</label><select id="editLeave"><option value="">없음</option><option value="연가">연가</option><option value="공가">공가</option><option value="교육">교육</option><option value="병가">병가</option><option value="특별휴가">특별휴가</option><option value="기타">기타</option></select><div class="actions"><button type="button" class="primary" id="saveEdit">저장</button><button type="button" class="secondary" id="clearEdit">변경 삭제</button><button type="button" id="closeEdit">닫기</button></div><p class="hint" id="saveMsg" aria-live="polite"></p></section><div class="backup"><button type="button" id="exportData">변경내역 백업</button><button type="button" id="importData">백업 불러오기</button><input type="file" id="importFile" accept=".json,application/json" hidden></div><p class="notice">날짜를 누르면 선택한 조의 근무·휴가·대직을 수정할 수 있습니다. 대직은 지정한 날짜에만 표시되며 원래 근무조 배치는 유지됩니다. 변경 사항은 로그인한 사용자끼리 공동 저장됩니다. 선택한 조의 일정만 편집합니다. 다른 조를 선택하면 해당 조를 편집할 수 있습니다.</p><div class="notice" id="holidayNotice"></div><div class="legend">노란색 = 선택한 조의 주간·야간·대직 근무일 · 보라색 = 조별 휴가·교육 · 빨간 날짜 = 일요일·공휴일<br>기준: 2026년 11월 1일 주간 4조 / 야간 3조</div></main><script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+</style></head><body><main class="wrap"><h1>📅 실험실 교대근무</h1><p class="sub">주간 08:00~17:00 · 야간 17:00~익일 08:00 · 주→야→비→휴</p><div id="authBar"><div id="authState">로그인 상태 확인 중…</div><div id="syncState">공동 저장 연결 대기 중</div><button id="loginGoogle" type="button">Google 로그인</button><button id="logoutGoogle" type="button" hidden>로그아웃</button></div><div id="approvalPanel" hidden><strong>🔒 관리자 승인 대기 중</strong><p>가입 요청이 접수되었습니다. 관리자가 승인하면 근무표를 이용할 수 있습니다.</p></div><button id="adminToggle" type="button" hidden>⚙️ 가입 관리</button><section id="adminPanel" hidden><h2>가입 요청 관리</h2><div id="adminList">불러오는 중…</div></section><div class="toolbar"><button type="button" id="prev">‹ 이전</button><strong id="month">2026년 11월</strong><button type="button" id="next">다음 ›</button></div><p class="hint" style="font-size:12px;color:#64748b;margin:0 0 7px">조회할 조 선택 · 일정 수정은 날짜를 누른 뒤 조를 선택하세요.</p><div class="groups" id="groups"><button type="button" data-group="1" class="">1조</button><button type="button" data-group="2" class="">2조</button><button type="button" data-group="3" class="">3조</button><button type="button" data-group="4" class="on">4조</button></div><div class="week"><div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div></div><div class="grid" id="grid"><div class="cell working sun"><div class="date">1</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">2</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">3</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">4</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">5</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">6</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell sat"><div class="date">7</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell sun"><div class="date">8</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">9</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">10</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">11</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">12</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">13</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working sat"><div class="date">14</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell sun"><div class="date">15</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">16</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">17</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">18</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">19</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">20</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working sat"><div class="date">21</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working sun"><div class="date">22</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">23</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell"><div class="date">24</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working"><div class="date">25</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">26</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div><div class="cell"><div class="date">27</div><div class="shift">주 2조</div><div class="shift">야 1조</div><div class="status">비번</div></div><div class="cell sat"><div class="date">28</div><div class="shift">주 3조</div><div class="shift">야 2조</div><div class="status">휴무</div></div><div class="cell working sun"><div class="date">29</div><div class="shift mine">주 4조</div><div class="shift">야 3조</div><div class="status">주간</div></div><div class="cell working"><div class="date">30</div><div class="shift">주 1조</div><div class="shift mine">야 4조</div><div class="status">야간</div></div></div><section class="editor" id="editor" hidden><h2 id="editTitle">근무 변경</h2><p class="hint" id="baseInfo"></p><label for="editGroup">수정할 조 선택 (상단 조 선택과 별개)</label><select id="editGroup"><option value="1">1조</option><option value="2">2조</option><option value="3">3조</option><option value="4">4조</option></select><label for="editShift">변경 근무 (기본 근무를 유지하려면 '기본대로')</label><select id="editShift"><option value="">기본대로</option><option value="주간">주간</option><option value="야간">야간</option><option value="비번">비번</option><option value="휴무">휴무</option></select><label for="editCover">대직 (선택한 조의 근무를 대신하는 조)</label><select id="editCover"><option value="">대직 없음</option><option value="1">1조</option><option value="2">2조</option><option value="3">3조</option><option value="4">4조</option></select><label for="editLeave">연가·공가·교육 등 표시</label><select id="editLeave"><option value="">없음</option><option value="연가">연가</option><option value="공가">공가</option><option value="교육">교육</option><option value="병가">병가</option><option value="특별휴가">특별휴가</option><option value="기타">기타</option></select><div id="otherLeave" hidden><label for="editLeaveText">기타 내용 직접 입력 (최대 24자)</label><input id="editLeaveText" type="text" maxlength="24" placeholder="예: 오전 반가, 반공가"></div><div class="actions"><button type="button" class="primary" id="saveEdit">저장</button><button type="button" class="secondary" id="clearEdit">변경 삭제</button><button type="button" id="closeEdit">닫기</button></div><p class="hint" id="saveMsg" aria-live="polite"></p></section><div class="backup"><button type="button" id="exportData">변경내역 백업</button><button type="button" id="importData">백업 불러오기</button><input type="file" id="importFile" accept=".json,application/json" hidden></div><p class="notice">날짜를 누르면 선택한 조의 근무·휴가·대직을 수정할 수 있습니다. 대직은 지정한 날짜에만 표시되며 원래 근무조 배치는 유지됩니다. 변경 사항은 로그인한 사용자끼리 공동 저장됩니다. 선택한 조의 일정만 편집합니다. 다른 조를 선택하면 해당 조를 편집할 수 있습니다.</p><div class="notice" id="holidayNotice"></div><div class="legend">노란색 = 선택한 조의 주간·야간·대직 근무일 · 보라색 = 조별 휴가·교육 · 빨간 날짜 = 일요일·공휴일<br>기준: 2026년 11월 1일 주간 4조 / 야간 3조</div></main><script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 <script>
@@ -53,7 +56,9 @@ const auth=firebase.auth(),db=firebase.firestore();
 (function(){
 var y=2026,m=11,group=4,editing=null;
 var storeKey='shift_calendar_changes_v1';
-var changes={},user=null,ready=false,unsub=null;
+var changes={},user=null,ready=false,unsub=null,approvalUnsub=null,adminUnsub=null,approved=false,isAdmin=false;
+// 최초 관리자 UID는 Firestore 규칙과 아래 두 곳에 동일하게 설정해야 합니다.
+const ADMIN_UID="QM79xPSSmRdlO0aHphG6ZiTEW3q2";
 var authState=document.getElementById('authState'),syncState=document.getElementById('syncState');
 function setSync(t){syncState.textContent=t}
 function updateAccess(){
@@ -62,22 +67,57 @@ function updateAccess(){
  document.getElementById('saveEdit').disabled=!(user&&ready);
  document.getElementById('clearEdit').disabled=!(user&&ready);
  document.getElementById('importData').disabled=!(user&&ready);
+ document.getElementById("approvalPanel").hidden=!user||approved;
+ document.getElementById("adminToggle").hidden=!isAdmin;
  authState.textContent=user?'로그인: '+(user.email||'Google 사용자'):'로그인 후 일정 수정 가능';
 }
 function persist(){return false} // 공동 저장 전용: 로컬 변경 저장 사용 안 함
-function validate(v){return {shift:['주간','야간','비번','휴무'].includes(v.shift)?v.shift:'',cover:['1','2','3','4'].includes(String(v.cover))?String(v.cover):'',leave:['연가','공가','교육','병가','특별휴가','기타'].includes(v.leave)?v.leave:''}}
+function validate(v){return {shift:['주간','야간','비번','휴무'].includes(v.shift)?v.shift:'',cover:['1','2','3','4'].includes(String(v.cover))?String(v.cover):'',leave:['연가','공가','교육','병가','특별휴가','기타'].includes(v.leave)?v.leave:'',leaveText:typeof v.leaveText==='string'?v.leaveText.slice(0,24):''}}
 function documentId(k){return k.replace('|','_')}
 function connect(){
  if(unsub){unsub();unsub=null}
  changes={};ready=false;render();updateAccess();
  if(!user){setSync('로그인해야 공동 일정이 표시됩니다.');return}
+ if(!approved){setSync('승인 대기 중 · 근무표 데이터 접근 불가');return}
  setSync('공동 근무표 불러오는 중…');
  unsub=db.collection('scheduleChanges').onSnapshot(function(snap){
   var all={};snap.forEach(function(doc){var d=doc.data();if(d&&typeof d.key==='string'&&/^\d{4}-\d{2}-\d{2}\|[1-4]$/.test(d.key))all[d.key]=validate(d)});
   changes=all;ready=true;render();updateAccess();setSync('● 공동 근무표 연결됨 · 실시간 동기화 중');
  },function(err){ready=false;updateAccess();setSync('연결 실패: '+err.message+' (Firestore 규칙을 확인하세요)')});
 }
-auth.onAuthStateChanged(function(u){user=u;connect()});
+auth.onAuthStateChanged(async function(u){
+ user=u;approved=false;isAdmin=!!u&&u.uid===ADMIN_UID;
+ if(approvalUnsub){approvalUnsub();approvalUnsub=null}
+ if(adminUnsub){adminUnsub();adminUnsub=null}
+ document.getElementById('adminPanel').hidden=true;
+ if(!u){connect();return}
+ if(isAdmin){approved=true;connect();startAdmin();return}
+ try{
+  const ref=db.collection('members').doc(u.uid);
+  const snap=await ref.get();
+  if(!snap.exists)await ref.set({email:u.email||'',name:u.displayName||'',status:'pending',requestedAt:firebase.firestore.FieldValue.serverTimestamp()});
+  approvalUnsub=ref.onSnapshot(function(doc){
+   approved=doc.exists&&doc.data().status==='approved';connect();
+  },function(err){approved=false;connect();setSync('승인 정보 확인 실패: '+err.message)});
+ }catch(err){approved=false;connect();setSync('가입 신청 실패: '+err.message)}
+});
+function startAdmin(){
+ adminUnsub=db.collection('members').onSnapshot(function(snap){
+  const box=document.getElementById('adminList');box.replaceChildren();
+  if(snap.empty){box.textContent='가입 신청자가 없습니다.';return}
+  snap.forEach(function(doc){
+   const d=doc.data(),row=document.createElement('div');row.className='person';
+   const label=document.createElement('div');label.textContent=(d.name||'사용자')+' · '+(d.email||'')+' · '+(d.status==='approved'?'승인됨':d.status==='rejected'?'거절됨':'대기 중');row.appendChild(label);
+   for(const [status,title] of [['approved','승인'],['rejected','거절/권한 취소']]){
+    if(d.status===status)continue;
+    const b=document.createElement('button');b.type='button';b.textContent=title;
+    b.onclick=async function(){if(!confirm((d.email||'해당 사용자')+' : '+title+'할까요?'))return;try{await db.collection('members').doc(doc.id).update({status:status})}catch(e){alert(e.message)}};
+    row.appendChild(b);
+   }box.appendChild(row);
+  });
+ },function(err){document.getElementById('adminList').textContent='관리 목록 오류: '+err.message});
+}
+document.getElementById('adminToggle').onclick=function(){const p=document.getElementById('adminPanel');p.hidden=!p.hidden;if(!p.hidden)p.scrollIntoView({behavior:'smooth'})};
 document.getElementById('loginGoogle').addEventListener('click',async function(){
  try{await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}catch(e){
   if(e.code==='auth/popup-blocked'||e.code==='auth/operation-not-supported-in-this-environment'){
@@ -133,7 +173,7 @@ function render(){
   var tags='';
   for(var gg=1;gg<=4;gg++){
    var other=changes[keyFor(y,m,d,gg)]||{};
-   if(other.leave)tags+='<span class="tag">'+gg+'조 '+safe(other.leave)+'</span>';
+   if(other.leave)tags+='<span class="tag" title="'+safe(other.leave==='기타'?(other.leaveText||'기타'):other.leave)+'">'+gg+'조 '+safe(other.leave==='기타'?(other.leaveText||'기타'):other.leave)+'</span>';
    if(other.cover)tags+='<span class="tag shift-tag">'+gg+'조→'+safe(other.cover)+'조 대직</span>';
   }
   out+='<div tabindex="0" role="button" aria-label="'+d+'일 근무 수정" data-date="'+d+'" class="cell'+(working?' working':'')+(change.shift||change.cover||change.leave?' changed':'')+(wd===0?' sun':wd===6?' sat':'') +(isCover?' covering':'')+'"><div class="date'+(holiday?' holiday-date':'')+'">'+d+'</div><div class="shift'+(day===group?' mine':'')+'">주 '+day+'조</div><div class="shift'+(night===group?' mine':'')+'">야 '+night+'조</div><div class="status">'+status+'</div>'+tags+'</div>';
@@ -152,24 +192,29 @@ function setEditorGroup(g){
  document.getElementById('editShift').value=v.shift||'';
  document.getElementById('editCover').value=v.cover||'';
  document.getElementById('editLeave').value=v.leave||'';
+ document.getElementById('editLeaveText').value=v.leaveText||'';toggleOther();
  document.getElementById('saveMsg').textContent=user?'저장하면 모든 로그인 사용자에게 반영됩니다.':'수정하려면 먼저 Google 로그인하세요.';
  updateAccess();
 }
 function openEditor(d){
+ if(!approved){alert('관리자 승인 후 이용할 수 있습니다.');return}
  editing={y:y,m:m,d:d,g:group};
  setEditorGroup(group);
  document.getElementById('editor').hidden=false;
  document.getElementById('editor').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
+function toggleOther(){document.getElementById('otherLeave').hidden=document.getElementById('editLeave').value!=='기타'}
+document.getElementById('editLeave').addEventListener('change',toggleOther);
 document.getElementById('editGroup').addEventListener('change',function(){setEditorGroup(this.value)});
 grid.addEventListener('click',function(e){var el=e.target.closest('[data-date]');if(el)openEditor(Number(el.getAttribute('data-date')))});
 grid.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){var el=e.target.closest('[data-date]');if(el){e.preventDefault();openEditor(Number(el.getAttribute('data-date')))}}});
 document.getElementById('saveEdit').addEventListener('click',async function(){
  if(!editing||!user||!ready)return;
- var v={shift:document.getElementById('editShift').value,cover:document.getElementById('editCover').value,leave:document.getElementById('editLeave').value};
+ var v={shift:document.getElementById('editShift').value,cover:document.getElementById('editCover').value,leave:document.getElementById('editLeave').value,leaveText:document.getElementById('editLeave').value==='기타'?document.getElementById('editLeaveText').value.trim():''};
  var k=keyFor(editing.y,editing.m,editing.d,editing.g);
+ if(v.leave==='기타'&&!v.leaveText){document.getElementById('saveMsg').textContent='기타 내용을 입력해 주세요.';return}
  if(v.cover===String(editing.g)){document.getElementById('saveMsg').textContent='같은 조를 대직자로 지정할 수 없습니다.';return}
- if(!confirm(editing.y+'년 '+editing.m+'월 '+editing.d+'일 · '+editing.g+'조\n근무: '+(v.shift||'기본대로')+' / 대직: '+(v.cover?v.cover+'조':'없음')+' / 구분: '+(v.leave||'없음')+'\n저장할까요?'))return;
+ if(!confirm(editing.y+'년 '+editing.m+'월 '+editing.d+'일 · '+editing.g+'조\n근무: '+(v.shift||'기본대로')+' / 대직: '+(v.cover?v.cover+'조':'없음')+' / 구분: '+(v.leave==='기타'?v.leaveText:v.leave||'없음')+'\n저장할까요?'))return;
  try{var ref=db.collection('scheduleChanges').doc(documentId(k));if(v.shift||v.cover||v.leave)await ref.set(Object.assign({key:k},v));else await ref.delete();document.getElementById('saveMsg').textContent='공동 저장 완료';}
  catch(err){document.getElementById('saveMsg').textContent='저장 실패: '+err.message}
 });
@@ -196,7 +241,7 @@ document.getElementById('importFile').addEventListener('change',function(e){
    Object.keys(data).forEach(function(k){
     if(!/^\d{4}-\d{2}-\d{2}\|[1-4]$/.test(k))return;
     var v=data[k];if(!v||typeof v!=='object')return;
-    cleaned[k]={shift:['주간','야간','비번','휴무'].includes(v.shift)?v.shift:'',cover:['1','2','3','4'].includes(String(v.cover))?String(v.cover):'',leave:['연가','공가','교육','병가','특별휴가','기타'].includes(v.leave)?v.leave:''};
+    cleaned[k]={shift:['주간','야간','비번','휴무'].includes(v.shift)?v.shift:'',cover:['1','2','3','4'].includes(String(v.cover))?String(v.cover):'',leave:['연가','공가','교육','병가','특별휴가','기타'].includes(v.leave)?v.leave:'',leaveText:typeof v.leaveText==='string'?v.leaveText.slice(0,24):''};
    });
    if(!confirm('현재 변경내역을 백업 파일의 내용으로 교체할까요?'))return;
    if(!user||!ready){alert('로그인과 동기화가 필요합니다.');return}
@@ -205,7 +250,7 @@ document.getElementById('importFile').addEventListener('change',function(e){
  };
  reader.readAsText(file);e.target.value='';
 });
-buttons.addEventListener('click',function(e){var g=e.target.getAttribute('data-group');if(g){group=Number(g);render()}});
+buttons.addEventListener('click',function(e){var g=e.target.getAttribute('data-group');if(g){group=Number(g);document.getElementById('editor').hidden=true;editing=null;render()}});
 document.getElementById('prev').addEventListener('click',function(){m--;if(m<1){m=12;y--}document.getElementById('editor').hidden=true;editing=null;render()});
 document.getElementById('next').addEventListener('click',function(){m++;if(m>12){m=1;y++}document.getElementById('editor').hidden=true;editing=null;render()});
 })();
