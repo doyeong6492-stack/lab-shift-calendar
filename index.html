@@ -127,7 +127,7 @@ function render(){
     if(String(cv.cover)===String(group) && cg!==group)coverForSelected.push(cg);
   }
   var isCover=coverForSelected.length>0;
-  var wd=(first+d-1)%7,working=(status==='주간'||status==='야간'||isCover);
+  var wd=(first+d-1)%7,working=((status==='주간'||status==='야간')&&!change.cover&&!change.leave)||isCover;
   var key=String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0');
   var holiday=holidays[y]&&holidays[y][key]?holidays[y][key]:'';
   var tags='';
@@ -161,6 +161,8 @@ document.getElementById('saveEdit').addEventListener('click',async function(){
  if(!editing||!user||!ready)return;
  var v={shift:document.getElementById('editShift').value,cover:document.getElementById('editCover').value,leave:document.getElementById('editLeave').value};
  var k=keyFor(editing.y,editing.m,editing.d,editing.g);
+ if(editing.g!==group){document.getElementById('saveMsg').textContent='선택한 조가 바뀌었습니다. 날짜를 다시 선택하세요.';return}
+ if(v.leave && !['주간','야간'].includes(v.shift||baseStatus(editing.y,editing.m,editing.d,editing.g)) && !confirm('선택한 '+editing.g+'조는 이 날짜에 기본적으로 비번·휴무입니다.\n그래도 '+v.leave+'를 등록할까요?'))return;
  if(v.cover===String(editing.g)){document.getElementById('saveMsg').textContent='같은 조를 대직자로 지정할 수 없습니다.';return}
  if(!confirm(editing.y+'년 '+editing.m+'월 '+editing.d+'일 · '+editing.g+'조\n근무: '+(v.shift||'기본대로')+' / 대직: '+(v.cover?v.cover+'조':'없음')+' / 구분: '+(v.leave||'없음')+'\n저장할까요?'))return;
  try{var ref=db.collection('scheduleChanges').doc(documentId(k));if(v.shift||v.cover||v.leave)await ref.set(Object.assign({key:k},v));else await ref.delete();document.getElementById('saveMsg').textContent='공동 저장 완료';}
@@ -168,6 +170,7 @@ document.getElementById('saveEdit').addEventListener('click',async function(){
 });
 document.getElementById('clearEdit').addEventListener('click',async function(){
  if(!editing||!user||!ready)return;
+ if(editing.g!==group){alert('선택한 조가 바뀌었습니다. 날짜를 다시 선택하세요.');return}
  if(!confirm(editing.g+'조 '+editing.m+'월 '+editing.d+'일 변경 내역을 삭제할까요?'))return;
  try{await db.collection('scheduleChanges').doc(documentId(keyFor(editing.y,editing.m,editing.d,editing.g))).delete();document.getElementById('editor').hidden=true}
  catch(err){alert('삭제 실패: '+err.message)}
@@ -198,8 +201,8 @@ document.getElementById('importFile').addEventListener('change',function(e){
  };
  reader.readAsText(file);e.target.value='';
 });
-buttons.addEventListener('click',function(e){var g=e.target.getAttribute('data-group');if(g){group=Number(g);render()}});
-document.getElementById('prev').addEventListener('click',function(){m--;if(m<1){m=12;y--}render()});
-document.getElementById('next').addEventListener('click',function(){m++;if(m>12){m=1;y++}render()});
+buttons.addEventListener('click',function(e){var g=e.target.getAttribute('data-group');if(g){group=Number(g);document.getElementById('editor').hidden=true;editing=null;render()}});
+document.getElementById('prev').addEventListener('click',function(){m--;if(m<1){m=12;y--}document.getElementById('editor').hidden=true;editing=null;render()});
+document.getElementById('next').addEventListener('click',function(){m++;if(m>12){m=1;y++}document.getElementById('editor').hidden=true;editing=null;render()});
 })();
 </script></body></html>
