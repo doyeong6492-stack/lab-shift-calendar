@@ -66,7 +66,11 @@ const auth=firebase.auth(),db=firebase.firestore();
 <script>
 (function(){
 var today=new Date();
-var y=today.getFullYear(),m=today.getMonth()+1,group=4,editing=null;
+var y=today.getFullYear(),m=today.getMonth()+1,editing=null;
+// 조회용 조 선택은 이 브라우저에만 보관합니다. 공동 근무표 데이터와 별개입니다.
+var savedGroup;
+try { savedGroup=Number(localStorage.getItem('lab_shift_view_group')); } catch(e) { savedGroup=0; }
+var group=([1,2,3,4].includes(savedGroup)?savedGroup:4);
 var storeKey='shift_calendar_changes_v1';
 var changes={},user=null,ready=false,unsub=null,approvalUnsub=null,adminUnsub=null,approved=false,isAdmin=false;
 // 최초 관리자 UID는 Firestore 규칙과 아래 두 곳에 동일하게 설정해야 합니다.
@@ -262,7 +266,7 @@ document.getElementById('importFile').addEventListener('change',function(e){
  };
  reader.readAsText(file);e.target.value='';
 });
-buttons.addEventListener('click',function(e){var g=e.target.getAttribute('data-group');if(g){group=Number(g);document.getElementById('editor').hidden=true;editing=null;render()}});
+buttons.addEventListener('click',function(e){var g=e.target.getAttribute('data-group');if(g){group=Number(g);try{localStorage.setItem('lab_shift_view_group',String(group))}catch(err){}document.getElementById('editor').hidden=true;editing=null;render()}});
 document.getElementById('prev').addEventListener('click',function(){m--;if(m<1){m=12;y--}document.getElementById('editor').hidden=true;editing=null;render()});
 document.getElementById('next').addEventListener('click',function(){m++;if(m>12){m=1;y++}document.getElementById('editor').hidden=true;editing=null;render()});
 })();
